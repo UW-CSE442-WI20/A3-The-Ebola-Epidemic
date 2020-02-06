@@ -1,10 +1,9 @@
+h1 {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
 .visual {
     margin: auto;
     width: 700px;
-}
-
-.visual h2 {
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    margin-bottom: 0;
 }
