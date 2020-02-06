@@ -1,0 +1,259 @@
+{
+  "dimension": [
+                 {
+                   "label": "COUNTRY",
+                   "display": "Country"
+                 },
+                 {
+                   "label": "AGEGROUP",
+                   "display": "Age group"
+                 },
+                 {
+                   "label": "SEX",
+                   "display": "Gender"
+                 },
+                 {
+                   "label": "EBOLA_MEASURE",
+                   "display": "Ebola measure"
+                 },
+                 {
+                   "label": "CASE_DEFINITION",
+                   "display": "Case definition"
+                 },
+                 {
+                   "label": "INDICATOR_TYPE",
+                   "display": "Indicator type"
+                 },
+                 {
+                   "label": "DATAPACKAGEID",
+                   "display": "Data package ID"
+                 }
+               ],
+    "fact": [
+              {
+                "dims": {
+                          "COUNTRY": "Guinea",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Male",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Value": "1711"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Guinea",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Female",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Value": "1862"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Guinea",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "0-14"
+                        },
+                "Value": "560"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Guinea",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "15-44"
+                        },
+                "Value": "1983"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Guinea",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "45+"
+                        },
+                "Value": "982"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Liberia",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Male",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Value": "2959"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Liberia",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Female",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Value": "2893"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Liberia",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "0-14"
+                        },
+                "Value": "994"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Liberia",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "15-44"
+                        },
+                "Value": "3171"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Liberia",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "45+"
+                        },
+                "Value": "1209"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Sierra Leone",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Male",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Value": "5532"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Sierra Leone",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Female",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Value": "5885"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Sierra Leone",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "0-14"
+                        },
+                "Value": "2376"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Sierra Leone",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "15-44"
+                        },
+                "Value": "6331"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "Sierra Leone",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "45+"
+                        },
+                "Value": "2498"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "All countries",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Male",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Comments": "Total for Liberia, Sierra Leone, and Guinea where sex is known but age may not be known. Cases per capita are available in the WHO external situation report.",
+                "Value": "10 202"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "All countries",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Female",
+                          "AGEGROUP": "All ages (total)"
+                        },
+                "Comments": "Total for Liberia, Sierra Leone, and Guinea where sex is known but age may not be known. Cases per capita are available in the WHO external situation report.",
+                "Value": "10 640"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "All countries",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "0-14"
+                        },
+                "Comments": "Total for Liberia, Sierra Leone, and Guinea where age is known but sex may not be known. Cases per capita are available in the WHO external situation report.",
+                "Value": "3930"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "All countries",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "15-44"
+                        },
+                "Comments": "Total for Liberia, Sierra Leone, and Guinea where age is known but sex may not be known. Cases per capita are available in the WHO external situation report.",
+                "Value": "11 485"
+              },
+              {
+                "dims": {
+                          "COUNTRY": "All countries",
+                          "EBOLA_MEASURE": "Number of cases",
+                          "INDICATOR_TYPE": "Cumulative",
+                          "CASE_DEFINITION": "Confirmed and probable case total",
+                          "SEX": "Both sexes",
+                          "AGEGROUP": "45+"
+                        },
+                "Comments": "Total for Liberia, Sierra Leone, and Guinea where age is known but sex may not be known. Cases per capita are available in the WHO external situation report.",
+                "Value": "4689"
+              }
+      ]
+}
