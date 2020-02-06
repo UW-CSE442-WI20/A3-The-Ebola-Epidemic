@@ -1,5 +1,9 @@
 const d3 = require('d3');
 
+d3.json("http://localhost:8000/dec-2014.json", function(data){
+    console.log(data)
+});
+
 var svgContainer = d3.select(".visual")
                         .append("svg")
                         .attr("width", 700)
