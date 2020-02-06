@@ -205,7 +205,7 @@
                           "AGEGROUP": "All ages (total)"
                         },
                 "Comments": "Total for Liberia, Sierra Leone, and Guinea where sex is known but age may not be known. Cases per capita are available in the WHO external situation report.",
-                "Value": "10 202"
+                "Value": "10202"
               },
               {
                 "dims": {
@@ -217,7 +217,7 @@
                           "AGEGROUP": "All ages (total)"
                         },
                 "Comments": "Total for Liberia, Sierra Leone, and Guinea where sex is known but age may not be known. Cases per capita are available in the WHO external situation report.",
-                "Value": "10 640"
+                "Value": "10640"
               },
               {
                 "dims": {
@@ -241,7 +241,7 @@
                           "AGEGROUP": "15-44"
                         },
                 "Comments": "Total for Liberia, Sierra Leone, and Guinea where age is known but sex may not be known. Cases per capita are available in the WHO external situation report.",
-                "Value": "11 485"
+                "Value": "11485"
               },
               {
                 "dims": {
