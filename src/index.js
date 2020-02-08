@@ -1,8 +1,9 @@
 const d3 = require('d3');
-let filters2014 = drawNewData("dec-2014");
+let CIRCLE_NUM = 100;
+drawNewData("dec-2014");
 drawNewData("may-2015");
 drawNewData("apr-2016");
-// Add gender text
+// Append gender text (TODO: format using flexbox)
 d3.select(".selectors")
     .append("text")
     .text("gender");
@@ -14,34 +15,38 @@ function drawNewData(date) {
         males = (data.fact[15].Value).replace(/\s+/g, '');
         females = (data.fact[16].Value).replace(/\s+/g, '');
         var totalPeople = parseInt(males) + parseInt(females);
-        drawCircles(totalPeople);
-        console.log("Hi" + parseInt(males));
-        return [parseInt(males), parseInt(females)];
+        var parsedData = [totalPeople, parseInt(males), parseInt(females)];
+        drawCircles(parsedData, date);
     });
 }
 
-function filterGender() {
-    d3.selectAll("circle").on('click', function () {
-        d3.select(this).style("fill", "red");
+// Filters by gender for the given classname (based on outbreak year)
+function filterGender(classname, males, females) {
+    var circles = d3.selectAll("."+classname);
+    circles.each(function(d,i){
+        if (i < males / 100) {
+            d3.select(this).style("fill", "blue");
+        } else {
+            d3.select(this).style("fill", "pink");
+        }
     });
-
-    console.log("Filters 2014" + filters2014);
 }
 
-function drawCircles(totalPeople) {
+function drawCircles(parsedData, classname) {
     // height of container based on people per row and height of dot
     var svgContainer = d3.select(".visual")
         .append("svg")
         .attr("width", 700)
-        .attr("height", totalPeople / 2300 * 36);
+        .attr("height", parsedData[0] / 2300 * 36);
 
     var xCoord = 30;
     var yCoord = 30;
-    for (var i = 0; i < totalPeople; i += 100) {
+    for (var i = 0; i < parsedData[0]; i += CIRCLE_NUM) {
         var circle = svgContainer.append("circle")
             .attr("cx", xCoord)
             .attr("cy", yCoord)
             .attr("r", 8)
+            .attr("class", classname)
             .style("fill", "gray");
         xCoord += 30;
         if (xCoord > 700) {
@@ -49,6 +54,5 @@ function drawCircles(totalPeople) {
             xCoord = 30;
         }
     }
-
-    filterGender();
+    filterGender(classname, parsedData[1], parsedData[2]);
 }
