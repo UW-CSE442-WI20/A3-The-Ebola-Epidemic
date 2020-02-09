@@ -4,9 +4,9 @@ drawNewData("dec-2014");
 drawNewData("may-2015");
 drawNewData("apr-2016");
 // Append gender text (TODO: format using flexbox)
-d3.select(".selectors")
-    .append("text")
-    .text("gender");
+d3.select(".gender").append("text").text("gender");
+d3.select(".age-groups").append("text").text("age groups");
+d3.select(".visual").append("div", "clear").append("button").text("Clear Filter");
 
 function drawNewData(date) {
     d3.json(`https://raw.githubusercontent.com/UW-CSE442-WI20/A3-the-ebola-epidemic/master/data/${date}.json`).then((data) => {
@@ -14,8 +14,11 @@ function drawNewData(date) {
         // note: remove whitespace for large numbers (eg. 10 502)
         males = (data.fact[15].Value).replace(/\s+/g, '');
         females = (data.fact[16].Value).replace(/\s+/g, '');
+        agegrp014 = (data.fact[17].Value).replace(/\s+/g, '');
+        agegrp1544 = (data.fact[18].Value).replace(/\s+/g, '');
+        agegrp45 = (data.fact[19].Value).replace(/\s+/g, '');
         var totalPeople = parseInt(males) + parseInt(females);
-        var parsedData = [totalPeople, parseInt(males), parseInt(females)];
+        var parsedData = [totalPeople, parseInt(males), parseInt(females), parseInt(agegrp014), parseInt(agegrp1544), parseInt(agegrp45)];
         drawCircles(parsedData, date);
     });
 }
@@ -30,6 +33,23 @@ function filterGender(classname, males, females) {
             d3.select(this).style("fill", "pink");
         }
     });
+}
+
+function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
+    var circles = d3.selectAll("."+classname);
+    circles.each(function(d,i){
+        if (i < agegrp014 / 100) {
+            d3.select(this).style("fill", "#9e6ebd");
+        } else if (i < agegrp1544 / 100) {
+            d3.select(this).style("fill", "#7aa457");
+        } else {
+            d3.select(this).style("fill", "#cb6751");
+        }
+    });
+}
+
+function clearFilters() {
+    d3.selectAll("circle").style("fill", "gray");
 }
 
 function drawCircles(parsedData, classname) {
@@ -54,5 +74,18 @@ function drawCircles(parsedData, classname) {
             xCoord = 30;
         }
     }
-    filterGender(classname, parsedData[1], parsedData[2]);
+    d3.select(".gender").on("mouseover", function() {
+        filterGender("dec-2014", parsedData[1], parsedData[2]);
+        filterGender("may-2015", parsedData[1], parsedData[2]);
+        filterGender("apr-2016", parsedData[1], parsedData[2]);
+    });
+    d3.select(".age-groups").on("mouseover", function() {
+        filterAgeGroup("dec-2014", parsedData[3], parsedData[4], parsedData[5]);
+        filterAgeGroup("may-2015", parsedData[3], parsedData[4], parsedData[5]);
+        filterAgeGroup("apr-2016", parsedData[3], parsedData[4], parsedData[5]);
+    });
+
+    d3.select("button").on("click", function() {
+        clearFilters();
+    });
 }
