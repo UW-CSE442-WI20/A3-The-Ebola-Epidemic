@@ -3,10 +3,6 @@ let CIRCLE_NUM = 100;
 drawNewData("dec-2014");
 drawNewData("may-2015");
 drawNewData("apr-2016");
-// Append gender text (TODO: format using flexbox)
-d3.select(".gender").append("text").text("gender");
-d3.select(".age-groups").append("text").text("age groups");
-d3.select(".visual").append("div", "clear").append("button").text("Clear Filter");
 
 function drawNewData(date) {
     d3.json(`https://raw.githubusercontent.com/UW-CSE442-WI20/A3-the-ebola-epidemic/master/data/${date}.json`).then((data) => {
@@ -74,18 +70,18 @@ function drawCircles(parsedData, classname) {
             xCoord = 30;
         }
     }
-    d3.select(".gender").on("mouseover", function() {
+
+    d3.select("#gender").on("click", function() {
         filterGender("dec-2014", parsedData[1], parsedData[2]);
         filterGender("may-2015", parsedData[1], parsedData[2]);
         filterGender("apr-2016", parsedData[1], parsedData[2]);
     });
-    d3.select(".age-groups").on("mouseover", function() {
+    d3.select("#age-group").on("click", function() {
         filterAgeGroup("dec-2014", parsedData[3], parsedData[4], parsedData[5]);
         filterAgeGroup("may-2015", parsedData[3], parsedData[4], parsedData[5]);
         filterAgeGroup("apr-2016", parsedData[3], parsedData[4], parsedData[5]);
     });
-
-    d3.select("button").on("click", function() {
+    d3.selectAll("button").on("click", function() {
         clearFilters();
     });
 }
