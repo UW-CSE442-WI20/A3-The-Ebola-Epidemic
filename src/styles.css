@@ -30,18 +30,19 @@ h1 {
     visibility: hidden;
 }
 
-#people-legend {
+#color-legend {
     display: inline-block;
     position: fixed;
     top: 390px;
     left: 1150px;
+    visibility: hidden;
 }
 
-#color-legend {
+#people-legend {
     display: inline-block;
     position: fixed;
-    top: 250px;
-    right: 180px;
+    top: 540px;
+    left: 1150px;
 }
 
 input {

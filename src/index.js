@@ -46,7 +46,7 @@ function drawCircles(totalPeople, classname) {
     var xCoord = 20;
     var yCoord = 20;
     totalPeople /= CIRCLE_NUM;
-    for (var i = 0; i < totalPeople; i ++) {
+    for (var i = 0; i < totalPeople; i++) {
         var circle = svgContainer.append("circle")
             .attr("cx", xCoord)
             .attr("cy", yCoord)
@@ -74,25 +74,26 @@ function filterGender(classname, males, females) {
 }
 
 function colorLegend(filterType) {
-    var svgContainer = d3.select("#colors").append("svg")
+    d3.select("#color-legend").style("visibility", "visible");
+    var svgContainer = d3.select("#colors").append("svg");
     var legendLabels;
     var circleColors;
     if (filterType == "gender" ) {
-        legendLabels = ["Male", "Label"];
-        circleColors = ["blue", "pink"];
-        svgContainer.attr("width", 100).attr("height", 80);
+        legendLabels = ["Male", "Female"];
+        circleColors = genderColors;
+        svgContainer.attr("width", 100).attr("height", 50);
     } else if (filterType == "agegrp" ) {
-        legendLabels = ["Age Group 0-14", "Age Group 14-55", "Age Group 45+"];
-        circleColors = ["#9e6ebd", "#7aa457", "#cb6751"];
-        svgContainer.attr("width", 175).attr("height", 100);
+        legendLabels = ["Ages 0-14", "Ages 14-55", "Ages 45+"];
+        circleColors = ageColors;
+        svgContainer.attr("width", 175).attr("height", 80);
     } else { // countries
-        legendLabels = ["Guinea", "Liberua", "Sierra Leone"];
-        circleColors = ["red", "blue", "green"];
-        svgContainer.attr("width", 130).attr("height", 100);
+        legendLabels = ["Guinea", "Liberia", "Sierra Leone"];
+        circleColors = countryColors;
+        svgContainer.attr("width", 130).attr("height", 80);
     }
 
-    var xCoord = 20;
-    var yCoord = 30;
+    var xCoord = 10;
+    var yCoord = 10;
 
     for (var i = 0; i < legendLabels.length; i++) {
         var circle = svgContainer.append("circle")
@@ -140,7 +141,7 @@ function filterCountries(classname, guinea, liberia, sierraLeone) {
 function clearFilters() {
     d3.selectAll("circle").style("fill", "gray");
     d3.select("#colors").html("");
-    d3.selectAll("input").property("checked", false);
+    // d3.selectAll("input").property("checked", false);
 }
 
 function updateAge() {
@@ -213,6 +214,7 @@ function listeners() {
         filterGender("dec-2014", parsedData2014[1], parsedData2014[2]);
         filterGender("may-2015", parsedData2015[1], parsedData2015[2]);
         filterGender("apr-2016", parsedData2016[1], parsedData2016[2]);
+        colorLegend("gender");
     });
     d3.select("#age-group").on("click", function() {
         d3.select("#subfilter-age").style("visibility", "visible");
@@ -225,6 +227,7 @@ function listeners() {
         filterAgeGroup("dec-2014", parsedData2014[3], parsedData2014[4], parsedData2014[5]);
         filterAgeGroup("may-2015", parsedData2015[3], parsedData2015[4], parsedData2015[5]);
         filterAgeGroup("apr-2016", parsedData2016[3], parsedData2016[4], parsedData2016[5]);
+        colorLegend("agegrp");
     });
     d3.select("#countries").on("click", function() {
         d3.select("#subfilter-country").style("visibility", "visible");
@@ -237,6 +240,7 @@ function listeners() {
         filterCountries("dec-2014", parsedData2014[6], parsedData2014[7], parsedData2014[8]);
         filterCountries("may-2015", parsedData2015[6], parsedData2015[7], parsedData2015[8]);
         filterCountries("apr-2016", parsedData2016[6], parsedData2016[7], parsedData2016[8]);
+        colorLegend("countries");
     });
     d3.selectAll("button").on("click", function() {
         clearFilters();
