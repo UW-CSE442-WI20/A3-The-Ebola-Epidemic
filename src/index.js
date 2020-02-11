@@ -13,8 +13,13 @@ function drawNewData(date) {
         agegrp014 = (data.fact[17].Value).replace(/\s+/g, '');
         agegrp1544 = (data.fact[18].Value).replace(/\s+/g, '');
         agegrp45 = (data.fact[19].Value).replace(/\s+/g, '');
+
+        guinea = parseInt((data.fact[0].Value).replace(/\s+/g, '')) + parseInt((data.fact[1].Value).replace(/\s+/g, ''));
+        liberua = parseInt((data.fact[5].Value).replace(/\s+/g, '')) + parseInt((data.fact[6].Value).replace(/\s+/g, ''));
+        sierraLeone = parseInt((data.fact[10].Value).replace(/\s+/g, '')) + parseInt((data.fact[11].Value).replace(/\s+/g, ''));
+
         var totalPeople = parseInt(males) + parseInt(females);
-        var parsedData = [totalPeople, parseInt(males), parseInt(females), parseInt(agegrp014), parseInt(agegrp1544), parseInt(agegrp45)];
+        var parsedData = [totalPeople, parseInt(males), parseInt(females), parseInt(agegrp014), parseInt(agegrp1544), parseInt(agegrp45), guinea, liberua, sierraLeone];
         drawCircles(parsedData, date);
     });
 }
@@ -23,9 +28,9 @@ function drawNewData(date) {
 function filterGender(classname, males, females) {
     var circles = d3.selectAll("."+classname);
     circles.each(function(d,i){
-        if (i < males / 100) {
+        if (i < males / CIRCLE_NUM) {
             d3.select(this).style("fill", "blue");
-        } else {
+        } else if (i >= (males / CIRCLE_NUM) && i < ((males + females) / CIRCLE_NUM)) {
             d3.select(this).style("fill", "pink");
         }
     });
@@ -34,11 +39,25 @@ function filterGender(classname, males, females) {
 function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
     var circles = d3.selectAll("."+classname);
     circles.each(function(d,i){
-        if (i < agegrp014 / 100) {
+        if (i < agegrp014 / CIRCLE_NUM) {
             d3.select(this).style("fill", "#9e6ebd");
-        } else if (i < agegrp1544 / 100) {
+        } else if (i >= (agegrp014/ CIRCLE_NUM) && i < ((agegrp014 + agegrp1544) / CIRCLE_NUM)) {
             d3.select(this).style("fill", "#7aa457");
-        } else {
+        } else if (i >= ((agegrp014 + agegrp1544)/ CIRCLE_NUM) && i < ((agegrp1544 + agegrp014 + agegrp45) / CIRCLE_NUM)) {
+            d3.select(this).style("fill", "#cb6751");
+        }
+    });
+}
+
+function filterCountries(classname, guinea, liberua, sierraLeone) {
+
+    var circles = d3.selectAll("."+classname);
+    circles.each(function(d,i){
+        if (i < guinea / CIRCLE_NUM) {
+            d3.select(this).style("fill", "#9e6ebd");
+        } else if (i >= (guinea / CIRCLE_NUM) && i < ((liberua + guinea) / CIRCLE_NUM)) {
+            d3.select(this).style("fill", "#7aa457");
+        } else if (i >= ((liberua + guinea) / CIRCLE_NUM) && i < ((liberua + guinea + sierraLeone) / CIRCLE_NUM)) {
             d3.select(this).style("fill", "#cb6751");
         }
     });
@@ -71,6 +90,25 @@ function drawCircles(parsedData, classname) {
         }
     }
 
+    // console.log("males : " + parsedData[1]);
+    // console.log("females : " + parsedData[2]);
+    // console.log("total sex ct : " + ( parsedData[1] + parsedData[2]));
+
+    
+
+    // console.log("agegrp015 : " + parsedData[3]);
+    // console.log("agegrp1544 : " + parsedData[4]);
+    // console.log("agegrp45 : " + parsedData[5]);
+    // console.log("total age ct: " + (parsedData[3] + parsedData[4] + parsedData[5]));
+
+
+    // console.log("guinea : " + parsedData[6]);
+    // console.log("liberua : " + parsedData[7]);
+    // console.log("sierraLeone : " + parsedData[8]);
+    // console.log("total countries ct : " + (parsedData[6] + parsedData[7] + parsedData[8]));
+
+
+
     d3.select("#gender").on("click", function() {
         filterGender("dec-2014", parsedData[1], parsedData[2]);
         filterGender("may-2015", parsedData[1], parsedData[2]);
@@ -81,7 +119,13 @@ function drawCircles(parsedData, classname) {
         filterAgeGroup("may-2015", parsedData[3], parsedData[4], parsedData[5]);
         filterAgeGroup("apr-2016", parsedData[3], parsedData[4], parsedData[5]);
     });
+    d3.select("#countries").on("click", function() {
+        filterCountries("dec-2014", parsedData[6], parsedData[7], parsedData[8]);
+        filterCountries("may-2015", parsedData[6], parsedData[7], parsedData[8]);
+        filterCountries("apr-2016", parsedData[6], parsedData[7], parsedData[8]);
+    });
     d3.selectAll("button").on("click", function() {
         clearFilters();
     });
 }
+
