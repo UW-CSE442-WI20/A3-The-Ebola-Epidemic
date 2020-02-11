@@ -18,6 +18,13 @@ h1 {
     right: 180px;
 }
 
+#color-legend {
+    display: inline-block;
+    position: fixed;
+    top: 250px;
+    right: 180px;
+}
+
 input {
     margin-bottom: 10px;
 }

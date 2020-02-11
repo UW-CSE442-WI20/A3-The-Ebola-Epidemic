@@ -36,6 +36,45 @@ function filterGender(classname, males, females) {
     });
 }
 
+function colorLegend(filterType) {
+    var svgContainer = d3.select("#colors").append("svg")
+    var legendLabels;
+    var circleColors;
+    if (filterType == "gender" ) {
+        legendLabels = ["Male", "Label"];
+        circleColors = ["blue", "pink"];
+        svgContainer.attr("width", 100).attr("height", 80);
+    } else if (filterType == "agegrp" ) {
+        legendLabels = ["Age Group 0-14", "Age Group 14-55", "Age Group 45+"];
+        circleColors = ["#9e6ebd", "#7aa457", "#cb6751"];
+        svgContainer.attr("width", 175).attr("height", 100);
+    } else { // countries
+        legendLabels = ["Guinea", "Liberua", "Sierra Leone"];
+        circleColors = ["red", "blue", "green"];
+        svgContainer.attr("width", 130).attr("height", 100);
+    }
+
+    var xCoord = 20;
+    var yCoord = 30;
+
+    for (var i = 0; i < legendLabels.length; i++) {
+        var circle = svgContainer.append("circle")
+        .attr("cx", xCoord)
+        .attr("cy", yCoord)
+        .attr("r", 8)
+        .style("fill", circleColors[i]);
+
+        var label = svgContainer.append("text")
+            .text(legendLabels[i])
+            .attr("x", xCoord + 15)
+            .attr("y", yCoord + 5)
+            .style("font-family", "Lato")
+        
+        yCoord += 30;
+    }
+}
+
+
 function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
     var circles = d3.selectAll("."+classname);
     circles.each(function(d,i){
@@ -50,22 +89,23 @@ function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
 }
 
 function filterCountries(classname, guinea, liberua, sierraLeone) {
-
     var circles = d3.selectAll("."+classname);
     circles.each(function(d,i){
         if (i < guinea / CIRCLE_NUM) {
-            d3.select(this).style("fill", "#9e6ebd");
+            d3.select(this).style("fill", "red");
         } else if (i >= (guinea / CIRCLE_NUM) && i < ((liberua + guinea) / CIRCLE_NUM)) {
-            d3.select(this).style("fill", "#7aa457");
+            d3.select(this).style("fill", "blue");
         } else if (i >= ((liberua + guinea) / CIRCLE_NUM) && i < ((liberua + guinea + sierraLeone) / CIRCLE_NUM)) {
-            d3.select(this).style("fill", "#cb6751");
+            d3.select(this).style("fill", "green");
         }
     });
 }
 
-function clearFilters() {
+function clearFiltersAndColorLegend() {
     d3.selectAll("circle").style("fill", "gray");
+    d3.select("#colors").html("");
 }
+
 
 function drawCircles(parsedData, classname) {
     // height of container based on people per row and height of dot
@@ -110,22 +150,32 @@ function drawCircles(parsedData, classname) {
 
 
     d3.select("#gender").on("click", function() {
+        clearFiltersAndColorLegend();
         filterGender("dec-2014", parsedData[1], parsedData[2]);
         filterGender("may-2015", parsedData[1], parsedData[2]);
         filterGender("apr-2016", parsedData[1], parsedData[2]);
+        colorLegend("gender");
+        
     });
     d3.select("#age-group").on("click", function() {
+        clearFiltersAndColorLegend();
         filterAgeGroup("dec-2014", parsedData[3], parsedData[4], parsedData[5]);
         filterAgeGroup("may-2015", parsedData[3], parsedData[4], parsedData[5]);
         filterAgeGroup("apr-2016", parsedData[3], parsedData[4], parsedData[5]);
+        colorLegend("agegrp");
     });
     d3.select("#countries").on("click", function() {
+        clearFiltersAndColorLegend();
         filterCountries("dec-2014", parsedData[6], parsedData[7], parsedData[8]);
         filterCountries("may-2015", parsedData[6], parsedData[7], parsedData[8]);
         filterCountries("apr-2016", parsedData[6], parsedData[7], parsedData[8]);
+        colorLegend("countries");
     });
     d3.selectAll("button").on("click", function() {
-        clearFilters();
+        clearFiltersAndColorLegend();
+        d3.select("#gender").property('checked', false);
+        d3.select("#age-group").property('checked', false);
+        d3.select("#countries").property('checked', false);
     });
 }
 
