@@ -11,6 +11,10 @@ h1 {
     width: 700px;
 }
 
+.date {
+    font-size: 20px;
+}
+
 #filters {
     display: inline-block;
     position: fixed;

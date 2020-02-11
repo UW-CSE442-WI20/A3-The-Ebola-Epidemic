@@ -69,13 +69,18 @@ function clearFilters() {
 
 function drawCircles(parsedData, classname) {
     // height of container based on people per row and height of dot
+    var angle = 90;
+    var date = d3.select(".visual")
+        .append("div")
+        .text(classname.toUpperCase().replace('-', ' '))
+        .attr("class", "date")
     var svgContainer = d3.select(".visual")
         .append("svg")
         .attr("width", 700)
         .attr("height", parsedData[0] / 2300 * 36);
 
-    var xCoord = 30;
-    var yCoord = 30;
+    var xCoord = 20;
+    var yCoord = 20;
     for (var i = 0; i < parsedData[0]; i += CIRCLE_NUM) {
         var circle = svgContainer.append("circle")
             .attr("cx", xCoord)
@@ -86,7 +91,7 @@ function drawCircles(parsedData, classname) {
         xCoord += 30;
         if (xCoord > 700) {
             yCoord += 30;
-            xCoord = 30;
+            xCoord = 20;
         }
     }
 
@@ -94,7 +99,7 @@ function drawCircles(parsedData, classname) {
     // console.log("females : " + parsedData[2]);
     // console.log("total sex ct : " + ( parsedData[1] + parsedData[2]));
 
-    
+
 
     // console.log("agegrp015 : " + parsedData[3]);
     // console.log("agegrp1544 : " + parsedData[4]);
@@ -128,4 +133,3 @@ function drawCircles(parsedData, classname) {
         clearFilters();
     });
 }
-
