@@ -11,11 +11,23 @@ h1 {
     width: 700px;
 }
 
+.date {
+    font-size: 20px;
+}
+
 #filters {
     display: inline-block;
     position: fixed;
     top: 100px;
-    right: 180px;
+    left: 1150px;
+}
+
+#subfilter-age, #subfilter-gender, #subfilter-country {
+    display: inline-block;
+    position: fixed;
+    top: 260px;
+    left: 1150px;
+    visibility: hidden;
 }
 
 #color-legend {

@@ -9,9 +9,6 @@
   <body>
     <div class="visual">
         <h1>The Ebola Virus</h1>
-        <div class="gender"></div>
-        <div class="age-groups"></div>
-        <div class="countries"></div>
     </div>
     <div id="filters">
         <fieldset>
@@ -21,19 +18,58 @@
 
             <input type="radio" name="filter" id="age-group">
             <label for="age-group">Age Group</label><br/>
-      
+
             <input type="radio" name="filter" id="countries">
             <label for="countries">Countries</label><br/>
 
             <button type="button">Clear filters</button>
         </fieldset>
     </div>
+<!-- <<<<<<< HEAD
     <div id="color-legend">
       <fieldset>
           <legend>Color Legend</legend>
           <div id = "colors"></div>
       </fieldset>
   </div>
+======= -->
+    <div id="subfilter-gender">
+        <fieldset>
+            <legend>Subfilters</legend>
+            <input type="checkbox" class="subfilter-gender" id="male" checked>
+            <label for="male">Male</label><br/>
+
+            <input type="checkbox" class="subfilter-gender" id="female" checked>
+            <label for="female">Female</label><br/>
+        </fieldset>
+    </div>
+    <div id="subfilter-age">
+        <fieldset>
+            <legend>Subfilters</legend>
+            <input type="checkbox" class="subfilter-age" id="age0-14" checked>
+            <label for="age0-14">Ages 0-14</label><br/>
+
+            <input type="checkbox" class="subfilter-age" id="age15-44" checked>
+            <label for="age15-44">Ages 15-44</label><br/>
+
+            <input type="checkbox" class="subfilter-age" id="age44-and-up" checked>
+            <label for="age44-and-up">Ages 44+</label><br/>
+        </fieldset>
+    </div>
+    <div id="subfilter-country">
+        <fieldset>
+            <legend>Subfilters</legend>
+            <input type="checkbox" class="subfilter-country" id="guinea" checked>
+            <label for="guinea">Guinea</label><br/>
+
+            <input type="checkbox" class="subfilter-country" id="liberia" checked>
+            <label for="liberia">Liberia</label><br/>
+
+            <input type="checkbox" class="subfilter-country" id="sierraLeone" checked>
+            <label for="sierraLeone">Sierra Leone</label><br/>
+        </fieldset>
+    </div>
+>>>>>>> dfc2fdc10a8e62e0a1cde937eaea79c7a77ee63b
     <script src="./index.js"></script>
   </body>
 </html>
