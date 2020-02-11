@@ -42,7 +42,7 @@ function colorLegend(filterType) {
     var circleColors;
     if (filterType == "gender" ) {
         legendLabels = ["Male", "Label"];
-        circleColors = ["blue", "pink"];
+        circleColors = ["#67A3D9", "#F8B7CD"];
         svgContainer.attr("width", 100).attr("height", 80);
     } else if (filterType == "agegrp" ) {
         legendLabels = ["Age Group 0-14", "Age Group 14-55", "Age Group 45+"];
@@ -88,17 +88,6 @@ function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
     });
 }
 
-<<<<<<< HEAD
-function filterCountries(classname, guinea, liberua, sierraLeone) {
-    var circles = d3.selectAll("."+classname);
-    circles.each(function(d,i){
-        if (i < guinea / CIRCLE_NUM) {
-            d3.select(this).style("fill", "red");
-        } else if (i >= (guinea / CIRCLE_NUM) && i < ((liberua + guinea) / CIRCLE_NUM)) {
-            d3.select(this).style("fill", "blue");
-        } else if (i >= ((liberua + guinea) / CIRCLE_NUM) && i < ((liberua + guinea + sierraLeone) / CIRCLE_NUM)) {
-            d3.select(this).style("fill", "green");
-=======
 function filterCountries(classname, guinea, liberia, sierraLeone) {
     var circles = d3.selectAll("."+classname);
     circles.each(function(d,i){
@@ -108,7 +97,6 @@ function filterCountries(classname, guinea, liberia, sierraLeone) {
             d3.select(this).style("fill", "blue").classed("liberia", true);
         } else if (i >= ((liberia + guinea) / CIRCLE_NUM) && i < ((liberia + guinea + sierraLeone) / CIRCLE_NUM)) {
             d3.select(this).style("fill", "green").classed("sierraLeone", true);
->>>>>>> dfc2fdc10a8e62e0a1cde937eaea79c7a77ee63b
         }
     });
 }
@@ -116,7 +104,7 @@ function filterCountries(classname, guinea, liberia, sierraLeone) {
 function clearFiltersAndColorLegend() {
     d3.selectAll("circle").style("fill", "gray");
     d3.select("#colors").html("");
-    d3.selectAll("input").property("checked", false);
+    // d3.selectAll("input").property("checked", false);
 }
 
 
@@ -162,7 +150,7 @@ function drawCircles(parsedData, classname) {
     // console.log("total countries ct : " + (parsedData[6] + parsedData[7] + parsedData[8]));
 
     d3.select("#gender").on("click", function() {
-        // clearFiltersAndColorLegend();
+        clearFiltersAndColorLegend();
         d3.select("#subfilter-gender").style("visibility", "visible");
         d3.select("#subfilter-age").style("visibility", "hidden");
         d3.select("#subfilter-country").style("visibility", "hidden");
@@ -177,7 +165,7 @@ function drawCircles(parsedData, classname) {
         
     });
     d3.select("#age-group").on("click", function() {
-        // clearFiltersAndColorLegend();
+        clearFiltersAndColorLegend();
         d3.select("#subfilter-age").style("visibility", "visible");
         d3.select("#subfilter-gender").style("visibility", "hidden");
         d3.select("#subfilter-country").style("visibility", "hidden");
@@ -191,7 +179,7 @@ function drawCircles(parsedData, classname) {
         colorLegend("agegrp");
     });
     d3.select("#countries").on("click", function() {
-        // clearFiltersAndColorLegend();
+        clearFiltersAndColorLegend();
         d3.select("#subfilter-country").style("visibility", "visible");
         d3.select("#subfilter-gender").style("visibility", "hidden");
         d3.select("#subfilter-age").style("visibility", "hidden");
