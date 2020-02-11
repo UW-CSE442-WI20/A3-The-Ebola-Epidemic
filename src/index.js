@@ -73,46 +73,6 @@ function filterGender(classname, males, females) {
     });
 }
 
-function colorLegend(filterType) {
-    d3.select("#colors").html("");
-    d3.select("#color-legend").style("visibility", "visible");
-    var svgContainer = d3.select("#colors").append("svg");
-    var legendLabels;
-    var circleColors;
-    if (filterType == "gender" ) {
-        legendLabels = ["Male", "Female"];
-        circleColors = genderColors;
-        svgContainer.attr("width", 110).attr("height", 50);
-    } else if (filterType == "agegrp" ) {
-        legendLabels = ["Ages 0-14", "Ages 14-55", "Ages 45+"];
-        circleColors = ageColors;
-        svgContainer.attr("width", 110).attr("height", 80);
-    } else { // countries
-        legendLabels = ["Guinea", "Liberia", "Sierra Leone"];
-        circleColors = countryColors;
-        svgContainer.attr("width", 120).attr("height", 80);
-    }
-
-    var xCoord = 10;
-    var yCoord = 10;
-
-    for (var i = 0; i < legendLabels.length; i++) {
-        var circle = svgContainer.append("circle")
-        .attr("cx", xCoord)
-        .attr("cy", yCoord)
-        .attr("r", 8)
-        .style("fill", circleColors[i]);
-
-        var label = svgContainer.append("text")
-            .text(legendLabels[i])
-            .attr("x", xCoord + 15)
-            .attr("y", yCoord + 5)
-            .style("font-family", "Lato")
-
-        yCoord += 30;
-    }
-}
-
 function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
     var circles = d3.selectAll("."+classname);
     circles.each(function(d,i){
@@ -216,7 +176,6 @@ function listeners() {
         filterGender("dec-2014", parsedData2014[1], parsedData2014[2]);
         filterGender("may-2015", parsedData2015[1], parsedData2015[2]);
         filterGender("apr-2016", parsedData2016[1], parsedData2016[2]);
-        colorLegend("gender");
     });
     d3.select("#age-group").on("click", function() {
         d3.selectAll("circle").style("fill", "gray");
@@ -230,7 +189,6 @@ function listeners() {
         filterAgeGroup("dec-2014", parsedData2014[3], parsedData2014[4], parsedData2014[5]);
         filterAgeGroup("may-2015", parsedData2015[3], parsedData2015[4], parsedData2015[5]);
         filterAgeGroup("apr-2016", parsedData2016[3], parsedData2016[4], parsedData2016[5]);
-        colorLegend("agegrp");
     });
     d3.select("#countries").on("click", function() {
         d3.selectAll("circle").style("fill", "gray");
@@ -244,7 +202,6 @@ function listeners() {
         filterCountries("dec-2014", parsedData2014[6], parsedData2014[7], parsedData2014[8]);
         filterCountries("may-2015", parsedData2015[6], parsedData2015[7], parsedData2015[8]);
         filterCountries("apr-2016", parsedData2016[6], parsedData2016[7], parsedData2016[8]);
-        colorLegend("countries");
     });
     d3.selectAll("button").on("click", function() {
         clearFilters();
