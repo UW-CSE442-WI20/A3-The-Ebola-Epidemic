@@ -19,7 +19,15 @@ h1 {
     display: inline-block;
     position: fixed;
     top: 100px;
-    right: 180px;
+    left: 1150px;
+}
+
+#subfilter-age, #subfilter-gender, #subfilter-country {
+    display: inline-block;
+    position: fixed;
+    top: 260px;
+    left: 1150px;
+    visibility: hidden;
 }
 
 input {
