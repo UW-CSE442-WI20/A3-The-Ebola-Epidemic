@@ -82,15 +82,15 @@ function colorLegend(filterType) {
     if (filterType == "gender" ) {
         legendLabels = ["Male", "Female"];
         circleColors = genderColors;
-        svgContainer.attr("width", 100).attr("height", 50);
+        svgContainer.attr("width", 110).attr("height", 50);
     } else if (filterType == "agegrp" ) {
         legendLabels = ["Ages 0-14", "Ages 14-55", "Ages 45+"];
         circleColors = ageColors;
-        svgContainer.attr("width", 175).attr("height", 80);
+        svgContainer.attr("width", 110).attr("height", 80);
     } else { // countries
         legendLabels = ["Guinea", "Liberia", "Sierra Leone"];
         circleColors = countryColors;
-        svgContainer.attr("width", 130).attr("height", 80);
+        svgContainer.attr("width", 120).attr("height", 80);
     }
 
     var xCoord = 10;
@@ -205,6 +205,7 @@ function subfilter(options, checked, colors) {
 
 function listeners() {
     d3.select("#gender").on("click", function() {
+        d3.selectAll("circle").style("fill", "gray");
         d3.select("#subfilter-gender").style("visibility", "visible");
         d3.select("#subfilter-age").style("visibility", "hidden");
         d3.select("#subfilter-country").style("visibility", "hidden");
@@ -218,6 +219,7 @@ function listeners() {
         colorLegend("gender");
     });
     d3.select("#age-group").on("click", function() {
+        d3.selectAll("circle").style("fill", "gray");
         d3.select("#subfilter-age").style("visibility", "visible");
         d3.select("#subfilter-gender").style("visibility", "hidden");
         d3.select("#subfilter-country").style("visibility", "hidden");
@@ -231,6 +233,7 @@ function listeners() {
         colorLegend("agegrp");
     });
     d3.select("#countries").on("click", function() {
+        d3.selectAll("circle").style("fill", "gray");
         d3.select("#subfilter-country").style("visibility", "visible");
         d3.select("#subfilter-gender").style("visibility", "hidden");
         d3.select("#subfilter-age").style("visibility", "hidden");
