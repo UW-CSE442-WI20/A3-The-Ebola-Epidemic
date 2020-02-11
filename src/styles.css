@@ -30,6 +30,13 @@ h1 {
     visibility: hidden;
 }
 
+#people-legend {
+    display: inline-block;
+    position: fixed;
+    top: 390px;
+    left: 1150px;
+}
+
 #color-legend {
     display: inline-block;
     position: fixed;
