@@ -74,6 +74,7 @@ function filterGender(classname, males, females) {
 }
 
 function colorLegend(filterType) {
+    d3.select("#colors").html("");
     d3.select("#color-legend").style("visibility", "visible");
     var svgContainer = d3.select("#colors").append("svg");
     var legendLabels;
@@ -141,7 +142,7 @@ function filterCountries(classname, guinea, liberia, sierraLeone) {
 function clearFilters() {
     d3.selectAll("circle").style("fill", "gray");
     d3.select("#colors").html("");
-    // d3.selectAll("input").property("checked", false);
+    d3.selectAll("input").property("checked", false);
 }
 
 function updateAge() {
