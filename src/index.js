@@ -167,9 +167,9 @@ function updateCountry() {
 function subfilter(options, checked, colors) {
     options.forEach(function(d, i) {
         if (checked[i]) {
-            d3.selectAll("." + d).style("fill", colors[i]);
+            d3.selectAll("." + d).transition().duration(700).style("fill", colors[i]);
         } else {
-            d3.selectAll("." + d).style("fill", "gray");
+            d3.selectAll("." + d).transition().duration(700).style("fill", "gray");
         }
     });
 }
