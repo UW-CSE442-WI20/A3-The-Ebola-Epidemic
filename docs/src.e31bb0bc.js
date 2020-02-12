@@ -29641,37 +29641,48 @@ function filterGender(classname, males, females) {
   var circles = d3.selectAll("." + classname);
   circles.each(function (d, i) {
     if (i < males / CIRCLE_NUM) {
-      d3.select(this).style("fill", genderColors[0]).classed("male", true);
+      d3.select(this).classed("male", true);
     } else if (i >= males / CIRCLE_NUM && i < (males + females) / CIRCLE_NUM) {
-      d3.select(this).style("fill", genderColors[1]).classed("female", true);
+      d3.select(this).classed("female", true);
     }
   });
+  d3.selectAll('.male').transition().duration(700).style("fill", genderColors[0]);
+  d3.selectAll('.female').transition().duration(700).style("fill", genderColors[1]);
 }
 
 function filterAgeGroup(classname, agegrp014, agegrp1544, agegrp45) {
   var circles = d3.selectAll("." + classname);
   circles.each(function (d, i) {
     if (i < agegrp014 / CIRCLE_NUM) {
-      d3.select(this).style("fill", ageColors[0]).classed("age0-14", true);
+      d3.select(this).classed("age0-14", true);
     } else if (i >= agegrp014 / CIRCLE_NUM && i < (agegrp014 + agegrp1544) / CIRCLE_NUM) {
-      d3.select(this).style("fill", ageColors[1]).classed("age15-44", true);
+      d3.select(this).classed("age15-44", true);
     } else if (i >= (agegrp014 + agegrp1544) / CIRCLE_NUM && i < (agegrp1544 + agegrp014 + agegrp45) / CIRCLE_NUM) {
-      d3.select(this).style("fill", ageColors[2]).classed("age44-and-up", true);
+      d3.select(this).classed("age44-and-up", true);
+    } else {
+      d3.select(this).classed("other", true);
     }
   });
+  d3.selectAll('.age0-14').transition().duration(700).style("fill", ageColors[0]);
+  d3.selectAll('.age15-44').transition().duration(700).style("fill", ageColors[1]);
+  d3.selectAll('.age44-and-up').transition().duration(700).style("fill", ageColors[2]);
+  d3.selectAll('.other').transition().duration(700).style("fill", "gray");
 }
 
 function filterCountries(classname, guinea, liberia, sierraLeone) {
   var circles = d3.selectAll("." + classname);
   circles.each(function (d, i) {
     if (i < guinea / CIRCLE_NUM) {
-      d3.select(this).style("fill", countryColors[0]).classed("guinea", true);
+      d3.select(this).classed("guinea", true);
     } else if (i >= guinea / CIRCLE_NUM && i < (liberia + guinea) / CIRCLE_NUM) {
-      d3.select(this).style("fill", countryColors[1]).classed("liberia", true);
+      d3.select(this).classed("liberia", true);
     } else if (i >= (liberia + guinea) / CIRCLE_NUM && i < (liberia + guinea + sierraLeone) / CIRCLE_NUM) {
-      d3.select(this).style("fill", countryColors[2]).classed("sierraLeone", true);
+      d3.select(this).classed("sierraLeone", true);
     }
   });
+  d3.selectAll('.guinea').transition().duration(700).style("fill", countryColors[0]);
+  d3.selectAll('.liberia').transition().duration(700).style("fill", countryColors[1]);
+  d3.selectAll('.sierraLeone').transition().duration(700).style("fill", countryColors[2]);
 }
 
 function clearFilters() {
@@ -29743,7 +29754,6 @@ function subfilter(options, checked, colors) {
 
 function listeners() {
   d3.select("#gender").on("click", function () {
-    d3.selectAll("circle").style("fill", "gray");
     d3.select("#subfilter-gender").style("visibility", "visible");
     d3.select("#subfilter-age").style("visibility", "hidden");
     d3.select("#subfilter-country").style("visibility", "hidden");
@@ -29755,7 +29765,6 @@ function listeners() {
     filterGender("apr-2016", parsedData2016[1], parsedData2016[2]);
   });
   d3.select("#age-group").on("click", function () {
-    d3.selectAll("circle").style("fill", "gray");
     d3.select("#subfilter-age").style("visibility", "visible");
     d3.select("#subfilter-gender").style("visibility", "hidden");
     d3.select("#subfilter-country").style("visibility", "hidden");
@@ -29767,7 +29776,6 @@ function listeners() {
     filterAgeGroup("apr-2016", parsedData2016[3], parsedData2016[4], parsedData2016[5]);
   });
   d3.select("#countries").on("click", function () {
-    d3.selectAll("circle").style("fill", "gray");
     d3.select("#subfilter-country").style("visibility", "visible");
     d3.select("#subfilter-gender").style("visibility", "hidden");
     d3.select("#subfilter-age").style("visibility", "hidden");
@@ -29813,7 +29821,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61415" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57430" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
