@@ -1,0 +1,98 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.visual {
+    margin: auto;
+    width: 700px;
+}
+
+.date {
+    font-size: 20px;
+}
+
+#filters {
+    display: inline-block;
+    position: fixed;
+    top: 100px;
+    left: 1150px;
+}
+
+#filters fieldset,
+#people-legend fieldset {
+    width: 140px;
+}
+
+#subfilter-age, #subfilter-gender, #subfilter-country {
+    height: 150px;
+    width: 180px;
+    position: fixed;
+    top: 260px;
+    left: 1150px;
+    visibility: hidden;
+}
+
+.sub-fieldset {
+    width: 140px;
+    height: 90px;
+}
+
+#color-legend {
+    display: inline-block;
+    position: fixed;
+    top: 390px;
+    left: 1150px;
+    visibility: hidden;
+}
+
+#people-legend {
+    display: inline-block;
+    position: fixed;
+    top: 380px;
+    left: 1150px;
+}
+
+#people-legend fieldset {
+    height: 65px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+button {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+    margin-top: 5px;
+}
+
+.dot {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  right: 25px;
+}
+
+#people-legend .dot {
+    left: 15px;
+}
+
+.legend-label{
+    position: absolute;
+    left: 40px;
+}
+
+
+/*# sourceMappingURL=/styles.8986bff4.css.map */
