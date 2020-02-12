@@ -100,6 +100,9 @@ function handleMouseOver() {
     } else if(circle.classed("sierraLeone")) {
         percent = parsedData[8] / parsedData[0];
         numOfPeople = parsedData[8];
+    } else if(circle.classed("other")) {
+        percent = (parsedData[0] - (parsedData[3] + parsedData[4] + parsedData[5])) / parsedData[0];
+        numOfPeople = (parsedData[0] - (parsedData[3] + parsedData[4] + parsedData[5]));
     }
     var container = d3.select("#percent").html("");
         container.append("text")
@@ -244,6 +247,7 @@ function resetClass(classname){
         d3.select(this).classed("guinea", false);
         d3.select(this).classed("liberia", false);
         d3.select(this).classed("sierraLeone", false);
+        d3.select(this).classed("other", false);
     });
 }
 
