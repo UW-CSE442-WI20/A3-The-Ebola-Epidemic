@@ -29626,7 +29626,7 @@ function drawCircles(totalPeople, classname) {
   totalPeople /= CIRCLE_NUM;
 
   for (var i = 0; i < totalPeople; i++) {
-    var circle = svgContainer.append("circle").attr("cx", xCoord).attr("cy", yCoord).attr("r", 8).attr("class", classname).style("fill", "gray");
+    var circle = svgContainer.append("circle").attr("cx", xCoord).attr("cy", yCoord).attr("r", 8).attr("class", classname).style("fill", "gray").on("mouseover", handleMouseOver).on("mouseout", handleMouseOut);
     xCoord += 30;
 
     if (xCoord > 700) {
@@ -29634,6 +29634,58 @@ function drawCircles(totalPeople, classname) {
       xCoord = 20;
     }
   }
+} // Calculates the percent of the total that the colored area represents
+// when a mouse hovers over a dot
+
+
+function handleMouseOver() {
+  var circle = d3.select(this);
+  var percent = 1;
+  var parsedData = parsedData2014;
+
+  if (circle.classed("may-2015")) {
+    parsedData = parsedData2015;
+  } else if (circle.classed("apr-2016")) {
+    parsedData = parsedData2016;
+  }
+
+  var numOfPeople = parsedData[0];
+
+  if (circle.classed("male")) {
+    percent = parsedData[1] / parsedData[0];
+    numOfPeople = parsedData[1];
+  } else if (circle.classed("female")) {
+    percent = parsedData[2] / parsedData[0];
+    numOfPeople = parsedData[2];
+  } else if (circle.classed("age0-14")) {
+    percent = parsedData[3] / parsedData[0];
+    numOfPeople = parsedData[3];
+  } else if (circle.classed("age15-44")) {
+    percent = parsedData[4] / parsedData[0];
+    numOfPeople = parsedData[4];
+  } else if (circle.classed("age44-and-up")) {
+    percent = parsedData[5] / parsedData[0];
+    numOfPeople = parsedData[5];
+  } else if (circle.classed("guinea")) {
+    percent = parsedData[6] / parsedData[0];
+    numOfPeople = parsedData[6];
+  } else if (circle.classed("liberia")) {
+    percent = parsedData[7] / parsedData[0];
+    numOfPeople = parsedData[7];
+  } else if (circle.classed("sierraLeone")) {
+    percent = parsedData[8] / parsedData[0];
+    numOfPeople = parsedData[8];
+  }
+
+  var container = d3.select("#percent").html("");
+  container.append("text").text(Math.round(percent * 1000) / 10 + "%").style("font-family", "Lato").style("visibility", "visible").style("font-size", "54px");
+  d3.select("#numOfPeople").append("text").text(numOfPeople + " people").style("font-family", "Lato").style("visibility", "visible").style("font-size", "20px");
+} // Removes percentage when the mouse is over no dots
+
+
+function handleMouseOut() {
+  d3.select("#percent").html("").style("visibility", "hidden");
+  d3.select("#numOfPeople").html("");
 } // Filters by gender for the given classname (based on outbreak year)
 
 
@@ -29752,8 +29804,29 @@ function subfilter(options, checked, colors) {
   });
 }
 
+function resetClass(classname) {
+  var circles = d3.selectAll("." + classname);
+  circles.each(function (d, i) {
+    d3.select(this).classed("male", false);
+    d3.select(this).classed("female", false);
+    d3.select(this).classed("age0-14", false);
+    d3.select(this).classed("age15-44", false);
+    d3.select(this).classed("age44-and-up", false);
+    d3.select(this).classed("guinea", false);
+    d3.select(this).classed("liberia", false);
+    d3.select(this).classed("sierraLeone", false);
+  });
+}
+
+function resetClasses() {
+  resetClass("dec-2014");
+  resetClass("may-2015");
+  resetClass("apr-2016");
+}
+
 function listeners() {
   d3.select("#gender").on("click", function () {
+    resetClasses();
     d3.select("#subfilter-gender").style("visibility", "visible");
     d3.select("#subfilter-age").style("visibility", "hidden");
     d3.select("#subfilter-country").style("visibility", "hidden");
@@ -29765,6 +29838,7 @@ function listeners() {
     filterGender("apr-2016", parsedData2016[1], parsedData2016[2]);
   });
   d3.select("#age-group").on("click", function () {
+    resetClasses();
     d3.select("#subfilter-age").style("visibility", "visible");
     d3.select("#subfilter-gender").style("visibility", "hidden");
     d3.select("#subfilter-country").style("visibility", "hidden");
@@ -29776,6 +29850,7 @@ function listeners() {
     filterAgeGroup("apr-2016", parsedData2016[3], parsedData2016[4], parsedData2016[5]);
   });
   d3.select("#countries").on("click", function () {
+    resetClasses();
     d3.select("#subfilter-country").style("visibility", "visible");
     d3.select("#subfilter-gender").style("visibility", "hidden");
     d3.select("#subfilter-age").style("visibility", "hidden");
@@ -29787,6 +29862,7 @@ function listeners() {
     filterCountries("apr-2016", parsedData2016[6], parsedData2016[7], parsedData2016[8]);
   });
   d3.selectAll("button").on("click", function () {
+    resetClasses();
     clearFilters();
   });
   d3.selectAll(".subfilter-age").on("change", updateAge);
@@ -29821,7 +29897,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57530" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49904" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
