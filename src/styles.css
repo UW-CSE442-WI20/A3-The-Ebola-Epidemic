@@ -60,6 +60,22 @@ h1 {
     height: 65px;
 }
 
+#summary {
+	display: inline-block;
+	position: fixed;
+    top: 100px;
+    left: 50px;
+    width: 300px;
+}
+
+#percent {
+    display: inline-block;
+    position: fixed;
+    top: 500px;
+    left: 1150px;
+    visibility: hidden;
+}
+
 input {
     margin-bottom: 10px;
 }
