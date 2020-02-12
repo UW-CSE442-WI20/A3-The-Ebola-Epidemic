@@ -38,7 +38,7 @@ h1 {
 
 .sub-fieldset {
     width: 140px;
-    height: 120px;
+    height: 90px;
 }
 
 #color-legend {
@@ -52,8 +52,12 @@ h1 {
 #people-legend {
     display: inline-block;
     position: fixed;
-    top: 410px;
+    top: 380px;
     left: 1150px;
+}
+
+#people-legend fieldset {
+    height: 65px;
 }
 
 input {
@@ -70,4 +74,22 @@ button {
     font-size: 9pt;
     outline: none;
     margin-top: 5px;
+}
+
+.dot {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  right: 25px;
+}
+
+#people-legend .dot {
+    left: 15px;
+}
+
+.legend-label{
+    position: absolute;
+    left: 40px;
 }
