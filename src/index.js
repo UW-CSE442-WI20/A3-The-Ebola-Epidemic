@@ -67,42 +67,57 @@ function drawCircles(totalPeople, classname) {
 // when a mouse hovers over a dot
 function handleMouseOver() {
      var circle = d3.select(this);
-     var percent = 1;
-     var parsedData = parsedData2014;
+     let percent = 1;
+     let parsedData = parsedData2014;
      if(circle.classed("may-2015")) {
         parsedData = parsedData2015;
      } else if (circle.classed("apr-2016")) {
         parsedData = parsedData2016;
      }
+     let numOfPeople = parsedData[0];
+
     if(circle.classed("male")) {
         percent = parsedData[1] / parsedData[0];
+        numOfPeople = parsedData[1];
     } else if(circle.classed("female")) {
         percent = parsedData[2] / parsedData[0];
+        numOfPeople = parsedData[2];
     } else if(circle.classed("age0-14")) {
         percent = parsedData[3] / parsedData[0];
+        numOfPeople = parsedData[3];
     } else if(circle.classed("age15-44")) {
         percent = parsedData[4] / parsedData[0];
+        numOfPeople = parsedData[4];
     } else if(circle.classed("age44-and-up")) {
         percent = parsedData[5] / parsedData[0];
+        numOfPeople = parsedData[5];
     } else if(circle.classed("guinea")) {
         percent = parsedData[6] / parsedData[0];
+        numOfPeople = parsedData[6];
     } else if(circle.classed("liberia")) {
         percent = parsedData[7] / parsedData[0];
+        numOfPeople = parsedData[7];
     } else if(circle.classed("sierraLeone")) {
         percent = parsedData[8] / parsedData[0];
+        numOfPeople = parsedData[8];
     }
-    var svgContainer = d3.select("#percent").html("");
-        svgContainer.append("text")
+    var container = d3.select("#percent").html("");
+        container.append("text")
                         .text(Math.round(percent * 1000)/10  + "%")
                         .style("font-family", "Lato")
                         .style("visibility", "visible")
                         .style("font-size", "54px");
-
+    d3.select("#numOfPeople").append("text")
+                        .text(numOfPeople + " people")
+                        .style("font-family", "Lato")
+                        .style("visibility", "visible")
+                        .style("font-size", "20px");
 }
 
 // Removes percentage when the mouse is over no dots
 function handleMouseOut() {
     d3.select("#percent").html("").style("visibility", "hidden");
+    d3.select("#numOfPeople").html("")
 }
 
 // Filters by gender for the given classname (based on outbreak year)
