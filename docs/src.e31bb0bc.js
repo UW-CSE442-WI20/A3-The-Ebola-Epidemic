@@ -29745,9 +29745,9 @@ function updateCountry() {
 function subfilter(options, checked, colors) {
   options.forEach(function (d, i) {
     if (checked[i]) {
-      d3.selectAll("." + d).style("fill", colors[i]);
+      d3.selectAll("." + d).transition().duration(700).style("fill", colors[i]);
     } else {
-      d3.selectAll("." + d).style("fill", "gray");
+      d3.selectAll("." + d).transition().duration(700).style("fill", "gray");
     }
   });
 }
@@ -29821,7 +29821,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57430" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57530" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
