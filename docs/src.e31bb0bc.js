@@ -29675,6 +29675,9 @@ function handleMouseOver() {
   } else if (circle.classed("sierraLeone")) {
     percent = parsedData[8] / parsedData[0];
     numOfPeople = parsedData[8];
+  } else if (circle.classed("other")) {
+    percent = (parsedData[0] - (parsedData[3] + parsedData[4] + parsedData[5])) / parsedData[0];
+    numOfPeople = parsedData[0] - (parsedData[3] + parsedData[4] + parsedData[5]);
   }
 
   var container = d3.select("#percent").html("");
@@ -29741,6 +29744,9 @@ function clearFilters() {
   d3.selectAll("circle").style("fill", "gray");
   d3.select("#colors").html("");
   d3.selectAll("input").property("checked", false);
+  d3.select("#subfilter-age").style("visibility", "hidden");
+  d3.select("#subfilter-gender").style("visibility", "hidden");
+  d3.select("#subfilter-country").style("visibility", "hidden");
 }
 
 function updateAge() {
@@ -29815,6 +29821,7 @@ function resetClass(classname) {
     d3.select(this).classed("guinea", false);
     d3.select(this).classed("liberia", false);
     d3.select(this).classed("sierraLeone", false);
+    d3.select(this).classed("other", false);
   });
 }
 
@@ -29897,7 +29904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49904" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54451" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

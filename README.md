@@ -1,53 +1,20 @@
+### A rationale for your design decisions. How did you choose your particular visual encodings and interaction techniques? 
+
+We chose to represent people with dots show to a more personal way of representing people instead of dots. We chose to use one dot to represent 100 people to keep the design not too busy or overwhelming. The color scheme was chosen to be color blind friendly, and follow traditional associations for gender. The colors transition slowly when the filters change to help ease the viewer into a new data set, without a stark change. We chose to make our visualization the centerpiece of the webpage, and add additional information statically to the sides so the viewer would focus on the data. The dates we chose to display data for where the beginning of the dataset, which was around the time that the frequency of new ebola cases was peaking, may 2015 which showed the maximum number of active cases, and april 2016 which was the end of the data set, and shows the decline in active cases. 
+
+### What alternatives did you consider and how did you arrive at your ultimate choices?
+We explored a couple options for how to best represent the number of people with confirmed cases of Ebola virus. We first considered a scatter plot, with a non traditional scale for time, like the example we saw in class, but it didn’t make sense for us to use two measures in plotting the data, as our data fields were all nominal. We also considered adding dots as time passed to represent more people infected, but we felt that it did not allow for more direct comparison for how the virus spread over our chosen time period. Ultimately, we wanted to have a clean visualization that focused on the people infected, so we felt that three distinct groups of dots with color encodings for different filters was the best way to display the number of infected people over time. 
 
 
-# A3 Starter template
+### An overview of your development process. Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? 
 
-The starter code for creating interactive visualization prototypes.
+We first decided on what our project would be by all choosing a dataset and a topic that we would like to create a data visualization on. After our initial meeting, we looked at previous project examples and saw how some of the best ones observed current headline topics such as house market, mass shootings, and others. From there we decided to investigate virus outbreaks as the coronavirus is a trending topic that is concerning many people. Knowing what our topic was helped narrowed down the search for a dataset.
 
-## Getting Started
+We met again to decide what kind of visualization we would like to create and how to split the work among the team members. Trying to break the project into four independent parts was difficult so we decided to split our group into pairs where each pair would work together. For example, Puja and Sabrina worked on creating the circles for our visualization to represent the number of people that were infected and the interactive percentages that show when hovering over a circle. Sonya and Jessica worked on filtering the data such that the circles would be colored to represent different filters that the user chose.
 
-This repo is set up to use the [Parcel](https://parceljs.org/) bundler. If you don't
-like the way we've set things up, feel free to change it however you like!
-
-The only restriction is that __your final HTML/CSS/JS output must be stored in the "docs" folder__ so that
-GitHub knows how to serve it as a static site.
-
-### Install
-
-#### Required software
-
-You must have Node.js installed. I prefer to install it using [nvm](https://github.com/nvm-sh/nvm)
-because it doesn't require sudo and makes upgrades easier, but you can also just get it directly from
-https://nodejs.org/en/.
-
-#### Install dependecies
-
-Once you've got `node`, run the command `npm install` in this project folder
-and it will install all of the project-specific dependencies (if you're curious open up `package.json` to see where these are listed).
-
-npm is the _node package manager_.
-
-### Running the local dev server
-
-To run the project locally, run `npm start` and it will be available at http://localhost:1234/.
-
-### Building the final output
-
-Run `npm run build` and all of your assets will be compiled and placed into the `docs/` folder. Note
-that this command will overwrite the existing docs folder.
-
-Once pushed to GitHub, the output should be available at UW-CSE442-WI20.github.io/your-repo-name/
+Overall, all of us worked collaboratively on whatever things that we thought could be improved in our project. Altogether, we spent about 20 hours total.
 
 
-## Other notes
+### What aspects took the most time?
 
-### Using 3rd party libraries
-
-You are more than welcome to use open source packages such as D3.js, just make sure to cite these.
-
-To add a new one run `npm install --save <library-name>`, e.g. `npm install --save d3`. This will
-add the library locally so it is available for use in your JS files. It will also add `d3` to the
-list of dependencies in `package.json`.
-
-_Note that if you install a library your teammates will need to install it too. Once the dep is added
-to `package.json` simply running `npm install` in this directory will download the new dependency._
+The aspects that took the most time were the filtering and subfiltering options. This included figuring out the event handlers on the input buttons and how to class each of the circles so that the right ones would be highlighted appropriately. Another aspect that took some time initially was figuring out how to fetch the data from the JSON. After getting the data, there was an issue of the visualizations being produced in the right order since the requests occurred asynchronously. We later fixed this issue by requiring the file stored in another directory in the JavaScript file, so that there were no asynchronous issues. It took time to learn D3 as well, but we were able to learn many of the tools that it provides through this assignment. 
