@@ -176,6 +176,9 @@ function clearFilters() {
     d3.selectAll("circle").style("fill", "gray");
     d3.select("#colors").html("");
     d3.selectAll("input").property("checked", false);
+    d3.select("#subfilter-age").style("visibility", "hidden");
+    d3.select("#subfilter-gender").style("visibility", "hidden");
+    d3.select("#subfilter-country").style("visibility", "hidden");
 }
 
 function updateAge() {
